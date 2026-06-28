@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pétanque League</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -27,7 +28,9 @@
   .brand-sub { font-size: 9px; font-weight: 600; letter-spacing: 2.5px; color: var(--olive-light); text-transform: uppercase; }
   .brand-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--cream); }
   .nav { display: flex; gap: 2px; }
-  .nav-btn { background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: rgba(250,247,242,0.6); padding: 8px 14px; border-radius: 6px; text-transform: uppercase; transition: all .15s; }
+  .nav-btn { background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: rgba(250,247,242,0.6); padding: 8px 12px; border-radius: 6px; text-transform: uppercase; transition: all .15s; display: inline-flex; align-items: center; gap: 6px; }
+  .nav-icon { width: 16px; height: 16px; filter: brightness(0) invert(1); opacity: 0.7; }
+  .nav-btn:hover .nav-icon, .nav-btn.active .nav-icon { opacity: 1; }
   .nav-btn:hover { background: rgba(255,255,255,0.08); color: var(--cream); }
   .nav-btn.active { background: var(--terracotta); color: white; }
   .load-status { font-size: 11px; color: var(--olive-light); font-weight: 500; }
@@ -39,7 +42,7 @@
   /* HERO */
   .hero { background: var(--olive-dark); border-radius: 20px; padding: 52px 48px; color: var(--cream); margin-bottom: 36px; position: relative; overflow: hidden; }
   .hero-pattern { position: absolute; inset: 0; opacity: 0.04; background-image: radial-gradient(circle, var(--cream) 1.5px, transparent 1.5px); background-size: 28px 28px; }
-  .hero-balls { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); opacity: 0.12; font-size: 80px; line-height: 1; }
+  .hero-logo-bg { position: absolute; right: 36px; top: 50%; transform: translateY(-50%); width: 180px; height: 180px; opacity: 0.10; }
   .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--terra-light); margin-bottom: 10px; }
   .hero h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; line-height: 1.05; margin-bottom: 10px; }
   .hero p { font-size: 15px; color: rgba(250,247,242,0.72); margin-bottom: 28px; max-width: 520px; }
@@ -149,12 +152,14 @@
     .page { padding: 14px 14px 80px; }
     .hero { padding: 28px 20px; }
     .hero h1 { font-size: 34px; }
-    .hero-balls { display: none; }
+    .hero-logo-bg { display: none; }
     body { padding-bottom: 60px; }
   }
   .mnav-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; background: none; border: none; cursor: pointer; font-size: 9px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(250,247,242,0.5); padding: 4px 8px; text-decoration: none; }
   .mnav-btn.active { color: var(--terra-light); }
   .mnav-icon { font-size: 19px; }
+  .mnav-icon-img { width: 20px; height: 20px; filter: brightness(0) invert(1); opacity: 0.55; }
+  .mnav-btn.active .mnav-icon-img { opacity: 1; filter: brightness(0) saturate(100%) invert(45%) sepia(58%) saturate(700%) hue-rotate(330deg); }
 </style>
 </head>
 <body>
@@ -162,37 +167,37 @@
 <header class="header">
   <div class="header-inner">
     <a class="brand" href="index.html">
-      <div class="brand-icon">🎯</div>
+      <img src="assets/logo.svg" alt="Pétanque League" style="width:42px;height:42px;flex-shrink:0;">
       <div class="brand-text">
         <div class="brand-sub">Pétanque</div>
         <div class="brand-title">League</div>
       </div>
     </a>
     <nav class="nav">
-      <button class="nav-btn active" onclick="showPage('home')" id="nav-home">Home</button>
-      <button class="nav-btn" onclick="showPage('rankings')" id="nav-rankings">Rankings</button>
-      <button class="nav-btn" onclick="showPage('sessions')" id="nav-sessions">Sessions</button>
-      <button class="nav-btn" onclick="showPage('matches')" id="nav-matches">Matches</button>
-      <button class="nav-btn" onclick="showPage('players')" id="nav-players">Players</button>
-      <button class="nav-btn" onclick="showPage('howtoplay')" id="nav-howtoplay">How to Play</button>
+      <button class="nav-btn active" onclick="showPage('home')" id="nav-home"><img src="assets/icon-home.svg" class="nav-icon" alt="">Home</button>
+      <button class="nav-btn" onclick="showPage('rankings')" id="nav-rankings"><img src="assets/icon-rankings.svg" class="nav-icon" alt="">Rankings</button>
+      <button class="nav-btn" onclick="showPage('sessions')" id="nav-sessions"><img src="assets/icon-sessions.svg" class="nav-icon" alt="">Sessions</button>
+      <button class="nav-btn" onclick="showPage('matches')" id="nav-matches"><img src="assets/icon-matches.svg" class="nav-icon" alt="">Matches</button>
+      <button class="nav-btn" onclick="showPage('players')" id="nav-players"><img src="assets/icon-players.svg" class="nav-icon" alt="">Players</button>
+      <button class="nav-btn" onclick="showPage('howtoplay')" id="nav-howtoplay"><img src="assets/icon-howtoplay.svg" class="nav-icon" alt="">How to Play</button>
     </nav>
     <span class="load-status" id="load-status"></span>
   </div>
 </header>
 
 <div class="mobile-nav">
-  <button class="mnav-btn active" onclick="showPage('home')" id="mnav-home"><span class="mnav-icon">🏠</span>Home</button>
-  <button class="mnav-btn" onclick="showPage('rankings')" id="mnav-rankings"><span class="mnav-icon">🏆</span>Ranks</button>
-  <button class="mnav-btn" onclick="showPage('sessions')" id="mnav-sessions"><span class="mnav-icon">📅</span>Sessions</button>
-  <button class="mnav-btn" onclick="showPage('matches')" id="mnav-matches"><span class="mnav-icon">⚔️</span>Matches</button>
-  <button class="mnav-btn" onclick="showPage('players')" id="mnav-players"><span class="mnav-icon">👤</span>Players</button>
+  <button class="mnav-btn active" onclick="showPage('home')" id="mnav-home"><img src="assets/icon-home.svg" class="mnav-icon-img" alt="">Home</button>
+  <button class="mnav-btn" onclick="showPage('rankings')" id="mnav-rankings"><img src="assets/icon-rankings.svg" class="mnav-icon-img" alt="">Ranks</button>
+  <button class="mnav-btn" onclick="showPage('sessions')" id="mnav-sessions"><img src="assets/icon-sessions.svg" class="mnav-icon-img" alt="">Sessions</button>
+  <button class="mnav-btn" onclick="showPage('matches')" id="mnav-matches"><img src="assets/icon-matches.svg" class="mnav-icon-img" alt="">Matches</button>
+  <button class="mnav-btn" onclick="showPage('players')" id="mnav-players"><img src="assets/icon-players.svg" class="mnav-icon-img" alt="">Players</button>
 </div>
 
 <!-- HOME -->
 <div class="page active" id="page-home">
   <div class="hero">
     <div class="hero-pattern"></div>
-    <div class="hero-balls">🎯<br>⚪⚪<br>⚪⚪⚪</div>
+    <img src="assets/logo.svg" class="hero-logo-bg" alt="">
     <div class="hero-eyebrow">Official Standings</div>
     <h1>Pétanque<br>League</h1>
     <p>Tracks all results, sessions and player standings. Every match counts — substitutes score for themselves.</p>
@@ -530,6 +535,9 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+// Auto-refresh every 5 minutes to pick up new scores from Google Sheets
+setInterval(() => location.reload(), 5 * 60 * 1000);
 </script>
 </body>
 </html>
